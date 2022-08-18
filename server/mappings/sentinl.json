@@ -1,0 +1,75 @@
+{
+  "sentinl-watcher": {
+    "properties": {
+      "wizard": {
+        "type": "object",
+        "enabled": false
+      },
+      "input": {
+        "type": "object",
+        "enabled": false
+      },
+      "actions": {
+        "type": "object",
+        "enabled": false
+      },
+      "transform": {
+        "type": "object",
+        "enabled": false
+      },
+      "condition": {
+        "type": "object",
+        "enabled": false
+      },
+      "trigger": {
+        "type": "object",
+        "enabled": false
+      },
+      "report": {
+        "type": "boolean"
+      },
+      "disable": {
+        "type": "boolean"
+      },
+      "save_payload": {
+        "type": "boolean"
+      },
+      "impersonate": {
+        "type": "boolean"
+      },
+      "spy": {
+        "type": "boolean"
+      },
+      "title": {
+        "type": "text"
+      },
+      "username": {
+        "type": "text"
+      },
+      "sentinl": {
+        "type": "object",
+        "enabled": false
+      },
+      "dashboard_link": {
+        "type": "text"
+      },
+      "custom": {
+        "type": "object",
+        "enabled": false
+      }
+    }
+  },
+  "sentinl-user": {
+    "properties": {
+      "username": {
+        "type":  "text"
+      },
+      "sha": {
+        "type":  "text"
+      },
+      "password": {
+        "type":  "text"
+      }
+    }
+  }
+}

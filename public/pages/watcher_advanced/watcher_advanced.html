@@ -1,0 +1,14 @@
+<div class="app-container sentinl">
+  <top-nav menu="watcherAdvanced.topNavMenu" tabs="watcherAdvanced.tabsMenu"></top-nav>
+  <div class="container">
+    <div class="col-md-12">
+      <ui-code-editor
+        value="watcherAdvanced.watcherSourceText"
+        mode="json"
+        max-lines="50"
+        min-lines="50"
+        on-value-change="watcherAdvanced.updateWatcherDoc({ value: value })"
+      ></ui-code-editor>
+    </div>
+  </div>
+</div>

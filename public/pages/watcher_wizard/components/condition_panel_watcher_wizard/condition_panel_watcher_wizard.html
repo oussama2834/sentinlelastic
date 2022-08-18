@@ -1,0 +1,114 @@
+<section>
+  <form name="conditionPanelWatcherWizard.form" ng-model-options="{ getterSetter: true }" novalidate>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel-body">
+          <div class="row watcher-wizard-panel-header">
+            <div class="col-md-6">
+              <header>
+                <h4 class="form-text">
+                  Match condition
+                </h4>
+                <small class="form-text text-muted">
+                  Build condition and visualize historical data
+                </small>
+              </header>
+            </div>
+          </div> <!-- END header -->
+          <div class="row watcher-wizard-panel-paragraph">
+            <div class="watcher-wizard-condition-dd-menu col-md-12">
+              <wizard-condition-panel-expression
+                index-numeric-fields="conditionPanelWatcherWizard.indexesData.fieldNames.numeric"
+                index-date-fields="conditionPanelWatcherWizard.indexesData.fieldNames.date"
+                index-text-fields="conditionPanelWatcherWizard.indexesData.fieldNames.text"
+                chart-query-params="conditionPanelWatcherWizard.watcher.wizard.chart_query_params"
+                on-change="conditionPanelWatcherWizard.conditionExpression.handleChartParamsChange"
+              ></wizard-condition-panel-expression>
+            </div>
+            <div id="watcher-wizard-condition-tabset">
+              <uib-tabset active="active">
+                <uib-tab index="0" heading="Chart">
+                  <div class="row">
+                    <div
+                      class="col-md-1"
+                      ng-if="conditionPanelWatcherWizard.areMultipleCharts && conditionPanelWatcherWizard.isAnyActiveChart"
+                    >
+                      <div class="form-inline">
+                        <div class="form-group">
+                          <button 
+                            type="button"
+                            class="btn btn-sm btn-default"
+                            aria-label="Left Align"
+                            ng-click="conditionPanelWatcherWizard.switchToLeftChart()"
+                          >
+                            <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                          </button>
+                        </div>
+                        <div class="form-group">
+                          <button
+                            type="button"
+                            class="btn btn-sm btn-default"
+                            aria-label="Left Align"
+                            ng-click="conditionPanelWatcherWizard.switchToRightChart()"
+                          >
+                            <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-11">
+                      <div class="form-group">
+                        <p ng-show="conditionPanelWatcherWizard.activeChart.enabled">
+                          <i class="fa fa-area-chart"></i> {{conditionPanelWatcherWizard.activeChart.name}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" id="watcher-wizard-condition-chart" >
+                    <div class="col-md-12">
+                      <div
+                        class="form-group chart-container"
+                        ng-show="conditionPanelWatcherWizard.activeChart.enabled">
+                        <small class="form-text text-muted">Historical data:</small>
+                        <canvas
+                          class="chart chart-line"
+                          chart-data="conditionPanelWatcherWizard.activeChart.yAxis"
+                          chart-labels="conditionPanelWatcherWizard.activeChart.xAxis"
+                          chart-options="conditionPanelWatcherWizard.activeChart.options"
+                          chart-click="conditionPanelWatcherWizard.onChartClick"
+                        ></canvas> 
+                      </div>
+                      <div class="alert alert-warning" role="alert" ng-show="!conditionPanelWatcherWizard.isAnyActiveChart">
+                        <p>{{conditionPanelWatcherWizard.messages.nodata}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </uib-tab>
+                <uib-tab index="1" heading="Chart query">
+                  <div class="row" id="watcher-wizard-condition-chart-query" >
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <small class="form-text text-muted">Chart query (read only). <a ng-click="conditionPanelWatcherWizard.turnIntoAdvanced()">Convert to advanced</a></small>
+                        <ui-code-editor value="conditionPanelWatcherWizard.rawDoc.chart.text" mode="json" max-lines="50" min-lines="50" is-read-only="true"></ui-code-editor>
+                      </div>
+                    </div>
+                  </div> <!-- END -->
+                </uib-tab>
+                <uib-tab index="2" heading="Watcher query">
+                  <div class="row" id="watcher-wizard-condition-whatcher-query" >
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <small class="form-text text-muted">Watcher raw (read only). <a ng-click="conditionPanelWatcherWizard.turnIntoAdvanced()">Convert to advanced</a></small>
+                        <ui-code-editor value="conditionPanelWatcherWizard.rawDoc.watcher.text" mode="json" max-lines="50" min-lines="50" is-read-only="true"></ui-code-editor>
+                      </div>
+                    </div>
+                  </div> <!-- END -->
+                </uib-tab>
+              </uib-tabset>
+            </div>
+          </div> <!-- END condition based query builder -->
+        </div>
+      </div>
+    </div>
+  </form>
+</section>

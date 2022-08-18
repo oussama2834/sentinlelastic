@@ -1,0 +1,10 @@
+npm-debug.log*
+node_modules
+/.gradle
+/.idea
+/target
+/build
+package-lock.json
+*.swp
+data.json
+phantomjs
